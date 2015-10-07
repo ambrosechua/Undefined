@@ -12,13 +12,13 @@
                 <Font name="System Bold" size="48.0"/>
             </font>
         </Label>
-        <Label layoutX="31.0" layoutY="79.0" text="Stream your music privately. ">
+        <Label layoutX="28.0" layoutY="79.0" text="Stream and host your music privately. ">
             <font>
-                <Font size="18.0"/>
+                <Font size="14.0"/>
             </font>
         </Label>
-        <ProgressIndicator layoutX="134.0" layoutY="142.0" prefHeight="32.0" prefWidth="32.0"/>
-        <Label layoutX="92.0" layoutY="110.0" text="http://undefinedapp.com/">
+        <ProgressIndicator layoutX="134.0" layoutY="138.0" prefHeight="32.0" prefWidth="32.0"/>
+        <Label layoutX="89.0" layoutY="105.0" text="https://undefinedapp.com/">
             <font>
                 <Font size="10.0"/>
             </font>
