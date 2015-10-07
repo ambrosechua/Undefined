@@ -1,6 +1,7 @@
 package io.makerforce.undefined;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,33 +15,41 @@ import java.util.concurrent.TimeUnit;
 
 public class Main extends Application {
 
+    private Stage mainStage;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage initStage) throws Exception {
 
         Parent splashRoot = FXMLLoader.load(getClass().getResource("view/splash.fxml"));
         Scene splashScene = new Scene(splashRoot, 300, 200);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(splashScene);
-        primaryStage.show();
+        initStage.initStyle(StageStyle.UNDECORATED);
+        initStage.setScene(splashScene);
+        initStage.toFront();
+        initStage.show();
 
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.schedule(() -> {
-            Parent root = null;
-            try {
-                root = FXMLLoader.load(getClass().getResource("view/interface.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            primaryStage.setTitle("Hello World");
-            primaryStage.setScene(new Scene(root, 640, 480));
-            primaryStage.show();
-            primaryStage.toFront();
-            executor.shutdown();
-        }, 2, TimeUnit.SECONDS);
+            Platform.runLater(() -> {
+                initStage.close();
+
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("view/interface.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.exit(284);
+                }
+                mainStage = new Stage(StageStyle.DECORATED);
+                mainStage.setTitle("Undefined");
+                mainStage.setScene(new Scene(root, 640, 480));
+                mainStage.show();
+                executor.shutdown();
+            });
+        }, 1500, TimeUnit.MILLISECONDS);
     }
 
 }
