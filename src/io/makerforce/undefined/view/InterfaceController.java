@@ -36,7 +36,7 @@ public class InterfaceController {
     private Label currentArtist;
 
     @FXML
-    private ListView showList;
+    private ListView<String> showList;
     private ObservableList<String> showListItems = FXCollections.observableArrayList("Albums", "Artists", "Songs");
 
     @FXML
@@ -99,7 +99,7 @@ public class InterfaceController {
         // Raw bindings
 
         showList.setItems(showListItems);
-        ((SelectionModel) showList.selectionModelProperty().get()).clearAndSelect(0);
+        (showList.selectionModelProperty().get()).clearAndSelect(0);
 
         player.muteProperty().bind(muteToggle.selectedProperty());
         player.volumeProperty().bind(volumeSlider.valueProperty());

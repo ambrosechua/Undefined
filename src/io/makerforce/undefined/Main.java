@@ -32,24 +32,22 @@ public class Main extends Application {
         initStage.show();
 
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.schedule(() -> {
-            Platform.runLater(() -> {
-                initStage.close();
+        executor.schedule(() -> Platform.runLater(() -> {
+            initStage.close();
 
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("view/interface.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    System.exit(284);
-                }
-                mainStage = new Stage(StageStyle.DECORATED);
-                mainStage.setTitle("Undefined");
-                mainStage.setScene(new Scene(root, 640, 480));
-                mainStage.show();
-                executor.shutdown();
-            });
-        }, 1500, TimeUnit.MILLISECONDS);
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("view/interface.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.exit(284);
+            }
+            mainStage = new Stage(StageStyle.DECORATED);
+            mainStage.setTitle("Undefined");
+            mainStage.setScene(new Scene(root, 640, 480));
+            mainStage.show();
+            executor.shutdown();
+        }), 1500, TimeUnit.MILLISECONDS);
     }
 
 }
