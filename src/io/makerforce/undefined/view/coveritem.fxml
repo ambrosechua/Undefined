@@ -9,7 +9,7 @@
          xmlns="http://javafx.com/javafx/8.0.40">
     <children>
         <ImageView fx:id="imageView" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true"
-                   preserveRatio="true"></ImageView>
+                   preserveRatio="true"/>
         <VBox style="-fx-background-color: #0002, linear-gradient(#0000 0%, #0006 100%);" AnchorPane.bottomAnchor="0.0"
               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
