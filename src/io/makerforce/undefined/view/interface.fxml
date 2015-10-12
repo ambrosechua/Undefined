@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0"
-            minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40"
+            minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null"
             fx:controller="io.makerforce.undefined.view.InterfaceController">
     <bottom>
         <HBox alignment="CENTER_LEFT" spacing="7.0" BorderPane.alignment="CENTER_LEFT">
@@ -72,11 +72,11 @@
                 <Separator orientation="VERTICAL"/>
                 <HBox alignment="CENTER" spacing="7.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label fx:id="playbackTimeLabel" minWidth="42.0" prefHeight="24.0" text="01:00"/>
+                        <Label fx:id="playbackTimeLabel" minWidth="42.0" prefHeight="24.0" text="--:--"/>
                         <Slider fx:id="playbackSlider" max="1.0" min="0.0" prefHeight="16.0" prefWidth="156.0"
                                 HBox.hgrow="ALWAYS"/>
                         <Label fx:id="playbackLeftLabel" alignment="CENTER_RIGHT" minWidth="42.0" prefHeight="24.0"
-                               text="-01:00"/>
+                               text="--:--"/>
                     </children>
                     <HBox.margin>
                         <Insets/>
@@ -127,19 +127,15 @@
                         <VBox fx:id="currentDetails" alignment="BOTTOM_LEFT">
                             <children>
                                 <ImageView fx:id="currentImage" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true"
-                                           preserveRatio="true">
-                                    <image>
-                                        <Image url="@/images/srw.png"/>
-                                    </image>
-                                </ImageView>
+                                           preserveRatio="true"/>
                                 <VBox>
                                     <children>
-                                        <Label fx:id="currentTitle" text="Fade">
+                                        <Label fx:id="currentTitle">
                                             <font>
                                                 <Font name="System Bold" size="13.0"/>
                                             </font>
                                         </Label>
-                                        <Label fx:id="currentArtist" text="Alan Walker"/>
+                                        <Label fx:id="currentArtist"/>
                                     </children>
                                     <padding>
                                         <Insets bottom="7.0" left="10.0" right="10.0" top="7.0"/>
@@ -151,7 +147,14 @@
                 </VBox>
                 <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
                     <content>
-                        <FlowPane/>
+                        <FlowPane fx:id="flowPane" columnHalignment="CENTER" hgap="7.0" vgap="7.0">
+                            <children>
+
+                            </children>
+                            <padding>
+                                <Insets bottom="7.0" left="7.0" right="7.0" top="7.0"/>
+                            </padding>
+                        </FlowPane>
                     </content>
                 </ScrollPane>
             </items>

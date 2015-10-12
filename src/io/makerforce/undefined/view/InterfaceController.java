@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -40,6 +41,8 @@ public class InterfaceController {
 
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private FlowPane flowPane;
 
     private Image playIcon = new Image("/icons/play3.48.png");
     private Image pauseIcon = new Image("/icons/pause2.48.png");
@@ -104,6 +107,11 @@ public class InterfaceController {
         // Temporary stuff
 
         currentImage.setImage(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"));
+        currentArtist.setText("Alan Walker");
+        currentTitle.setText("Fade");
+
+        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Spectre/1", "Spectre", "Alan Walker"));
+        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1", "Fade", "Alan Walker"));
 
         // Player events
 
