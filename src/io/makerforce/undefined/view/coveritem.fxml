@@ -5,10 +5,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<fx:root xmlns:fx="http://javafx.com/fxml/1" prefHeight="180.0" prefWidth="180.0" type="javafx.scene.layout.AnchorPane"
+<fx:root xmlns:fx="http://javafx.com/fxml/1" prefHeight="160.0" prefWidth="160.0" type="javafx.scene.layout.AnchorPane"
          xmlns="http://javafx.com/javafx/8.0.40">
     <children>
-        <ImageView fx:id="imageView" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true"
+        <ImageView fx:id="imageView" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true"
                    preserveRatio="true"/>
         <VBox style="-fx-background-color: #0002, linear-gradient(#0000 0%, #0006 100%);" AnchorPane.bottomAnchor="0.0"
               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

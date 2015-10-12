@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -45,6 +46,8 @@ public class Main extends Application {
             mainStage = new Stage(StageStyle.DECORATED);
             mainStage.setTitle("Undefined");
             mainStage.setScene(new Scene(root, 640, 480));
+            mainStage.setMinHeight(((BorderPane) root).getMinHeight());
+            mainStage.setMinWidth(((BorderPane) root).getMinWidth());
             mainStage.show();
             executor.shutdown();
         }), 1500, TimeUnit.MILLISECONDS);

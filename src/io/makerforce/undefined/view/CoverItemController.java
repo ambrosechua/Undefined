@@ -25,11 +25,11 @@ public class CoverItemController extends AnchorPane {
     @FXML
     private ImageView imageView;
 
-    private StringProperty title = new SimpleStringProperty();
-    private StringProperty subtitle = new SimpleStringProperty();
-    private StringProperty secondary = new SimpleStringProperty();
+    private StringProperty title = new SimpleStringProperty("");
+    private StringProperty subtitle = new SimpleStringProperty("");
+    private StringProperty secondary = new SimpleStringProperty("");
 
-    private StringProperty image = new SimpleStringProperty();
+    private StringProperty image = new SimpleStringProperty("");
 
     public CoverItemController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("coveritem.fxml"));
@@ -71,7 +71,7 @@ public class CoverItemController extends AnchorPane {
                 imageView.setImage(new Image(url));
             }
         });
-        subtitleContainer.managedProperty().bind(secondary.isEqualTo(""));
+        subtitleContainer.managedProperty().bind(subtitle.isNotEqualTo(""));
     }
 
     public StringProperty titleProperty() {

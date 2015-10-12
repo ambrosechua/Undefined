@@ -43,6 +43,8 @@ public class InterfaceController {
     private ScrollPane scrollPane;
     @FXML
     private FlowPane flowPane;
+    //@FXML
+    private TrackListController trackList;
 
     private Image playIcon = new Image("/icons/play3.48.png");
     private Image pauseIcon = new Image("/icons/pause2.48.png");
@@ -85,6 +87,18 @@ public class InterfaceController {
 
     public void initialize() {
 
+        // Temporary stuff
+
+        currentImage.setImage(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"));
+        currentArtist.setText("Alan Walker");
+        currentTitle.setText("Fade");
+
+        trackList = new TrackListController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Spectre/1", "Spectre", "Alan Walker");
+        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Spectre/1", "Spectre", "Alan Walker"));
+        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1", "Fade", "Alan Walker"));
+        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1", "Alan Walker"));
+        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1", "Alan Walker"));
+
         // UI Bindings
 
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
@@ -99,19 +113,22 @@ public class InterfaceController {
         // Raw bindings
 
         showList.setItems(showListItems);
-        (showList.selectionModelProperty().get()).clearAndSelect(0);
+        showList.selectionModelProperty().get().clearAndSelect(0);
+        showList.selectionModelProperty().get().selectedIndexProperty().addListener(observable2 -> {
+            int sel = showList.selectionModelProperty().get().getSelectedIndex();
+            if (sel == 0) {
+                scrollPane.setContent(flowPane);
+                // artists
+            } else if (sel == 1) {
+                scrollPane.setContent(flowPane);
+                // albums
+            } else if (sel == 2) {
+                scrollPane.setContent(trackList);
+            }
+        });
 
         player.muteProperty().bind(muteToggle.selectedProperty());
         player.volumeProperty().bind(volumeSlider.valueProperty());
-
-        // Temporary stuff
-
-        currentImage.setImage(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"));
-        currentArtist.setText("Alan Walker");
-        currentTitle.setText("Fade");
-
-        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Spectre/1", "Spectre", "Alan Walker"));
-        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1", "Fade", "Alan Walker"));
 
         // Player events
 

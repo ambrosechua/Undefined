@@ -121,9 +121,9 @@
     <center>
         <SplitPane dividerPositions="0.2" BorderPane.alignment="CENTER">
             <items>
-                <VBox fx:id="leftPane" maxWidth="240.0" minWidth="120.0">
+                <VBox fx:id="leftPane" maxWidth="240.0" minWidth="80.0" prefWidth="50.0">
                     <children>
-                        <ListView fx:id="showList" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+                        <ListView fx:id="showList" VBox.vgrow="ALWAYS"/>
                         <VBox fx:id="currentDetails" alignment="BOTTOM_LEFT">
                             <children>
                                 <ImageView fx:id="currentImage" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true"
@@ -147,12 +147,13 @@
                 </VBox>
                 <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
                     <content>
-                        <FlowPane fx:id="flowPane" columnHalignment="CENTER" hgap="7.0" vgap="7.0">
+                        <FlowPane fx:id="flowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="7.0"
+                                  vgap="7.0">
                             <children>
 
                             </children>
                             <padding>
-                                <Insets bottom="7.0" left="7.0" right="7.0" top="7.0"/>
+                                <Insets bottom="14.0" left="14.0" right="14.0" top="14.0"/>
                             </padding>
                         </FlowPane>
                     </content>
