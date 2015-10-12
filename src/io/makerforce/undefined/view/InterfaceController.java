@@ -76,7 +76,7 @@ public class InterfaceController {
 
     public InterfaceController() {
 
-        player = new MediaPlayer(new Media("http://ambrose.makerforce.io/audio.mp3"));
+        player = new MediaPlayer(new Media("http://ambrose.makerforce.io:8080/tracks/Alan%20Walker/Fade/Fade.mp3"));
 
     }
 
@@ -100,6 +100,10 @@ public class InterfaceController {
 
         player.muteProperty().bind(muteToggle.selectedProperty());
         player.volumeProperty().bind(volumeSlider.valueProperty());
+
+        // Temporary stuff
+
+        currentImage.setImage(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"));
 
         // Player events
 

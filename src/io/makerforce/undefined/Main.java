@@ -38,7 +38,7 @@ public class Main extends Application {
 
                 Parent root = null;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("view/interface.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("view/interface-test.fxml"));
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.exit(284);
