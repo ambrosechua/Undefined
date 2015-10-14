@@ -49,6 +49,10 @@ public class LibraryManager extends SimpleObjectProperty<LibraryManager.LibraryM
         }
     }
 
+    public Library getLibrary() {
+        return l;
+    }
+
     public URL getEndPoint() {
         return endPoint;
     }
@@ -77,7 +81,7 @@ public class LibraryManager extends SimpleObjectProperty<LibraryManager.LibraryM
                 in.close();
 
                 JSONObject obj = new JSONObject(response.toString());
-                l = new Library(obj);
+                l = new Library(obj, endPoint);
 
                 this.set(READY);
             } catch (IOException e) {

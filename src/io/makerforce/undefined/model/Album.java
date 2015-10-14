@@ -4,6 +4,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import org.json.JSONObject;
 
+import java.net.URL;
+
 public class Album extends ItemList<Track> {
 
     public Album() {
@@ -14,10 +16,10 @@ public class Album extends ItemList<Track> {
         super(picture, title, artist);
     }
 
-    public Album(JSONObject o, String albumName, String artistName) {
-        this(new Image(o.getString("picture")), albumName, artistName);
+    public Album(JSONObject o, String albumName, String artistName, URL endPoint) {
+        this(new Image(endPoint.toString() + o.getString("picture")), albumName, artistName);
         o.getJSONObject("tracks").keySet().forEach((key) -> {
-            Track a = new Track(o.getJSONObject("tracks").getJSONObject(key)); //, key, albumName, artistName);
+            Track a = new Track(o.getJSONObject("tracks").getJSONObject(key), endPoint); //, key, albumName, artistName);
             super.getItems().add(a);
         });
     }

@@ -31,6 +31,10 @@ public class TestClasses {
 
         System.out.println(l.toString()); // Should print [[[null (null, null), null (null, null), null (null, null), null (null, null)], [null (null, null), null (null, null), null (null, null), null (null, null)]], [[], []]]
 
+        LibraryManager a = new LibraryManager();
+        a.update();
+        System.out.println(a.getLibrary());
+
     }
 
 }

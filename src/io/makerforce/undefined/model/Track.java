@@ -25,16 +25,16 @@ public class Track implements Item {
 
     }
 
-    public Track(JSONObject track) {
+    public Track(JSONObject track, URL endPoint) {
         this();
         title = track.getString("title");
         try {
-            file = new URL(track.getString("file"));
+            file = new URL(endPoint.toString() + track.getString("file"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
             file = null;
         }
-        picture = new Image(track.getString("picture"));
+        picture = new Image(endPoint + track.getString("picture"));
         artist = track.getString("artist");
         album = track.getString("album");
         year = track.getString("year");
