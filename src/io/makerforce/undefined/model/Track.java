@@ -1,18 +1,15 @@
 package io.makerforce.undefined.model;
 
-import javafx.scene.image.Image;
+import io.makerforce.undefined.util.Util;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import java.util.stream.StreamSupport;
 
 public class Track implements Item {
 
     private URL file;
-    private Image picture;
+    private URL picture;
     private String title;
     private String artist;
     private String album;
@@ -25,25 +22,38 @@ public class Track implements Item {
 
     }
 
+    @Deprecated
     public Track(JSONObject track, URL endPoint) {
+        this(track, "", "", endPoint);
+    }
+
+    public Track(JSONObject track, String albumName, String artistName, URL endPoint) {
         this();
-        title = track.getString("title");
-        try {
-            file = new URL(endPoint.toString() + track.getString("file"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            file = null;
-        }
-        picture = new Image(endPoint + track.getString("picture"));
-        artist = track.getString("artist");
-        album = track.getString("album");
+        title = Util.getNotEmpty(
+                track.getString("title"),
+                (track.has("filetitle") ? track.getString("filetitle") : "")
+        );
+        file = Util.toURLOrNull(endPoint + track.getString("file"));
+        picture = Util.toURLOrNull(endPoint + track.getString("picture"));
+        artist = Util.getNotEmpty(
+                (track.getJSONArray("artist").length() > 0 ? track.getJSONArray("artist").getString(0) : ""),
+                artistName
+        );
+        album = Util.getNotEmpty(
+                track.getString("album"),
+                albumName
+        );
         year = track.getString("year");
         trackNumber = track.getInt("number"); // track.getJSONObject("track").getInt("no");
         totalTracks = track.getJSONObject("track").getInt("of");
-        genre = (String[]) StreamSupport.stream(Spliterators.spliteratorUnknownSize(track.getJSONArray("genre").iterator(), Spliterator.ORDERED), false).toArray();
+        JSONArray genres = track.getJSONArray("genre");
+        genre = new String[genres.length()];
+        for (int i = 0; i < genres.length(); i++) {
+            genre[i] = genres.getString(i);
+        }
     }
 
-    public Image getPicture() {
+    public URL getPicture() {
         return picture;
     }
 

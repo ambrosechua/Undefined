@@ -1,10 +1,10 @@
 package io.makerforce.undefined.model;
 
-import javafx.scene.image.Image;
+import java.net.URL;
 
 public interface Item {
 
-    public Image getPicture();
+    public URL getPicture();
 
     public String getTitle();
 

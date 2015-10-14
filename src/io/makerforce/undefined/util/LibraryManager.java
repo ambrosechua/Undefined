@@ -14,12 +14,16 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class LibraryManager extends SimpleObjectProperty<LibraryManager.LibraryManagerState> {
+public class LibraryManager {
 
     public static final LibraryManagerState EMPTY = new LibraryManagerState("empty");
     public static final LibraryManagerState UPDATING = new LibraryManagerState("updating");
     public static final LibraryManagerState ERROR = new LibraryManagerState("error");
     public static final LibraryManagerState READY = new LibraryManagerState("ready");
+
+    public static final String DEFAULT_ENDPOINT = "http://ambrose.makerforce.io:8080/";
+
+    private SimpleObjectProperty<LibraryManagerState> state = new SimpleObjectProperty<>();
 
     private URL endPoint;
 
@@ -29,20 +33,20 @@ public class LibraryManager extends SimpleObjectProperty<LibraryManager.LibraryM
     private boolean hasScheduled = false;
 
     public LibraryManager() {
-        this.set(EMPTY);
+        state.set(EMPTY);
         try {
-            this.endPoint = new URL("http://ambrose.makerforce.io:8080/");
+            this.endPoint = new URL(DEFAULT_ENDPOINT);
         } catch (MalformedURLException e) {
             e.printStackTrace(); // THIS SHOULD NEVER HAPPEN
         }
     }
 
     public LibraryManager(URL endPoint) {
-        this.set(EMPTY);
+        state.set(EMPTY);
         this.endPoint = endPoint;
-        if (!endPoint.toString().endsWith("/")) {
+        if (!this.endPoint.toString().endsWith("/")) {
             try {
-                endPoint = new URL(endPoint.toString() + "/");
+                this.endPoint = new URL(endPoint.toString() + "/");
             } catch (MalformedURLException e) {
                 e.printStackTrace(); // ALSO SHOULD NEVER HAPPEN
             }
@@ -60,7 +64,7 @@ public class LibraryManager extends SimpleObjectProperty<LibraryManager.LibraryM
     public void update() {
         new Thread(() -> {
             try {
-                this.set(UPDATING);
+                state.set(UPDATING);
 
                 HttpURLConnection con = (HttpURLConnection) endPoint.openConnection();
                 con.setRequestMethod("GET");
@@ -83,10 +87,10 @@ public class LibraryManager extends SimpleObjectProperty<LibraryManager.LibraryM
                 JSONObject obj = new JSONObject(response.toString());
                 l = new Library(obj, endPoint);
 
-                this.set(READY);
+                state.set(READY);
             } catch (IOException e) {
                 e.printStackTrace();
-                this.set(ERROR);
+                state.set(ERROR);
             }
         }).run();
     }

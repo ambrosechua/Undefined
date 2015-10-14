@@ -1,10 +1,10 @@
 package io.makerforce.undefined.view;
 
+import io.makerforce.undefined.model.Track;
+import io.makerforce.undefined.util.LibraryManager;
+import io.makerforce.undefined.util.PlayManager;
 import io.makerforce.undefined.util.Util;
 import javafx.application.Platform;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,10 +13,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import org.json.JSONObject;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -76,21 +77,21 @@ public class InterfaceController {
     @FXML
     private ImageView statusIcon;
 
-    private MediaPlayer player;
-
-    private BooleanProperty isPlaying = new SimpleBooleanProperty(false);
+    //private MediaPlayer player;
+    private PlayManager player = new PlayManager();
 
 
     public InterfaceController() {
-
-        player = new MediaPlayer(new Media("http://ambrose.makerforce.io:8080/tracks/Alan%20Walker/Fade/Fade.mp3"));
 
     }
 
     public void initialize() {
 
-        // Temporary stuff
+        trackList = new TrackListController();
+        coverList = new CoverListController();
 
+        // Temporary stuff
+        /*
         currentImage.setImage(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"));
         currentArtist.setText("Alan Walker");
         currentTitle.setText("Fade");
@@ -101,7 +102,12 @@ public class InterfaceController {
         flowPane.getChildren().add(new CoverItemController(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"), "Fade", "Alan Walker"));
         flowPane.getChildren().add(new CoverItemController(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"), "Alan Walker"));
         flowPane.getChildren().add(new CoverItemController(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"), "Alan Walker"));
-
+        */
+        try {
+            player.addToQueue(new Track(new JSONObject(""), "", "", new URL(LibraryManager.DEFAULT_ENDPOINT)));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         // UI Bindings
 
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
@@ -136,43 +142,31 @@ public class InterfaceController {
         // Player events
 
         // Playback status
-        player.statusProperty().addListener((observable, oldValue, s) -> {
-            if (
-                    s == MediaPlayer.Status.PAUSED ||
-                            s == MediaPlayer.Status.READY ||
-                            s == MediaPlayer.Status.STOPPED ||
-                            s == MediaPlayer.Status.UNKNOWN ||
-                            s == MediaPlayer.Status.HALTED
-                    ) {
-                pausePlayButtonIcon.setImage(playIcon);
-                isPlaying.setValue(false);
-            } else {
+        player.stateProperty().addListener((observable, old, state) -> {
+            if (state == PlayManager.PLAYING) {
                 pausePlayButtonIcon.setImage(pauseIcon);
-                isPlaying.setValue(true);
+            } else {
+                pausePlayButtonIcon.setImage(playIcon);
             }
         });
 
         // Update slider position when music plays.
-        ChangeListener<Duration> updateSlider = (observable, oldValue, c) -> {
-            playbackSlider.setValue(c.toMillis() / player.getTotalDuration().toMillis());
-            playbackTimeLabel.setText(Util.durationToString(player.getCurrentTime()));
-        };
-        player.currentTimeProperty().addListener(updateSlider);
+        playbackSlider.valueProperty().bind(player.currentPercent());
 
         // Update labels.
         playbackSlider.valueProperty().addListener((observable1, oldValue1, v) -> {
-            Duration d = new Duration(v.doubleValue() * player.getTotalDuration().toMillis());
+            Duration d = new Duration(v.doubleValue() * player.totalTimeProperty().get().toMillis());
             playbackTimeLabel.setText(Util.durationToString(d));
-            playbackLeftLabel.setText(Util.durationToString(d.subtract(player.getTotalDuration())));
+            playbackLeftLabel.setText(Util.durationToString(d.subtract(player.totalTimeProperty().get())));
         });
 
         // Seek when slider is released.
         playbackSlider.valueChangingProperty().addListener((observable, oldValue, c) -> {
             if (c) {
-                player.currentTimeProperty().removeListener(updateSlider);
+                playbackSlider.valueProperty().unbind();
             } else {
-                player.currentTimeProperty().addListener(updateSlider);
-                player.seek(new Duration(playbackSlider.getValue() * player.getTotalDuration().toMillis()));
+                playbackSlider.valueProperty().bind(player.currentPercent());
+                //player.seek(new Duration(playbackSlider.getValue() * player.totalTimeProperty().get().toMillis()));
             }
         });
 
@@ -181,7 +175,7 @@ public class InterfaceController {
     @FXML
     private void pausePlay() {
 
-        if (isPlaying.get()) {
+        if (player.stateProperty().get() == PlayManager.PLAYING) {
             player.pause();
         } else {
             player.play();

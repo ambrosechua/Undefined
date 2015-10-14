@@ -1,16 +1,11 @@
 package io.makerforce.undefined.util;
 
-import io.makerforce.undefined.model.Album;
-import io.makerforce.undefined.model.Artist;
-import io.makerforce.undefined.model.Library;
-import io.makerforce.undefined.model.Track;
-
 import java.net.MalformedURLException;
 
 public class TestClasses {
 
     public static void main(String[] args) throws MalformedURLException {
-
+        /*
         Library l = new Library();
 
         Album a1 = new Album();
@@ -30,6 +25,7 @@ public class TestClasses {
         l.getItems().addAll(r1, r2);
 
         System.out.println(l.toString()); // Should print [[[null (null, null), null (null, null), null (null, null), null (null, null)], [null (null, null), null (null, null), null (null, null), null (null, null)]], [[], []]]
+        */
 
         LibraryManager a = new LibraryManager();
         a.update();

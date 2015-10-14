@@ -2,23 +2,24 @@ package io.makerforce.undefined.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.image.Image;
+
+import java.net.URL;
 
 public class ItemList<T> implements Item {
 
-    private Image picture;
+    private URL picture;
     private String title;
     private String subtitle;
 
     private ObservableList<T> items = FXCollections.observableArrayList();
 
-    public ItemList(Image picture, String title, String subtitle) {
+    public ItemList(URL picture, String title, String subtitle) {
         this.picture = picture;
         this.title = title;
         this.subtitle = subtitle;
     }
 
-    public ItemList(Image picture, String title) {
+    public ItemList(URL picture, String title) {
         this(picture, title, "");
     }
 
@@ -26,7 +27,7 @@ public class ItemList<T> implements Item {
         this(null, "", "");
     }
 
-    public Image getPicture() {
+    public URL getPicture() {
         return picture;
     }
 
