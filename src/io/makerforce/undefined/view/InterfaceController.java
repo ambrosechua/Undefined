@@ -45,6 +45,8 @@ public class InterfaceController {
     private FlowPane flowPane;
     //@FXML
     private TrackListController trackList;
+    //@FXML
+    private CoverListController coverList;
 
     private Image playIcon = new Image("/icons/play3.48.png");
     private Image pauseIcon = new Image("/icons/pause2.48.png");
@@ -93,11 +95,12 @@ public class InterfaceController {
         currentArtist.setText("Alan Walker");
         currentTitle.setText("Fade");
 
-        trackList = new TrackListController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Spectre/1", "Spectre", "Alan Walker");
-        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Spectre/1", "Spectre", "Alan Walker"));
-        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1", "Fade", "Alan Walker"));
-        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1", "Alan Walker"));
-        flowPane.getChildren().add(new CoverItemController("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1", "Alan Walker"));
+        trackList = new TrackListController(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Spectre/1"), "Spectre", "Alan Walker");
+        coverList = new CoverListController();
+        flowPane.getChildren().add(new CoverItemController(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Spectre/1"), "Spectre", "Alan Walker"));
+        flowPane.getChildren().add(new CoverItemController(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"), "Fade", "Alan Walker"));
+        flowPane.getChildren().add(new CoverItemController(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"), "Alan Walker"));
+        flowPane.getChildren().add(new CoverItemController(new Image("http://ambrose.makerforce.io:8080/art/Alan%20Walker/Fade/1"), "Alan Walker"));
 
         // UI Bindings
 

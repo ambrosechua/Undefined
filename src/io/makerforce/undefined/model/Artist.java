@@ -1,4 +1,6 @@
 package io.makerforce.undefined.model;
 
-public class Playlist {
+public class Artist extends ItemList {
+
+
 }
