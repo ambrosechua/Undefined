@@ -21,9 +21,19 @@ public class Track implements Item {
     private int totalTracks;
     private String[] genre;
 
-    public Track(JSONObject track) throws MalformedURLException {
+    public Track() {
+
+    }
+
+    public Track(JSONObject track) {
+        this();
         title = track.getString("title");
-        file = new URL(track.getString("file"));
+        try {
+            file = new URL(track.getString("file"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            file = null;
+        }
         picture = new Image(track.getString("picture"));
         artist = track.getString("artist");
         album = track.getString("album");
@@ -31,10 +41,6 @@ public class Track implements Item {
         trackNumber = track.getInt("number"); // track.getJSONObject("track").getInt("no");
         totalTracks = track.getJSONObject("track").getInt("of");
         genre = (String[]) StreamSupport.stream(Spliterators.spliteratorUnknownSize(track.getJSONArray("genre").iterator(), Spliterator.ORDERED), false).toArray();
-    }
-
-    public Track() {
-
     }
 
     public Image getPicture() {
@@ -75,6 +81,10 @@ public class Track implements Item {
 
     public String[] getGenre() {
         return genre;
+    }
+
+    public String toString() {
+        return title + " (" + artist + ", " + album + ")";
     }
 
 }

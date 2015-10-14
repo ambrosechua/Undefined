@@ -1,4 +1,4 @@
-package io.makerforce.undefined.model;
+package io.makerforce.undefined.util;
 
 import javafx.util.Duration;
 

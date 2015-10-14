@@ -4,13 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
-public class ItemList implements Item {
+public class ItemList<T> implements Item {
 
     private Image picture;
     private String title;
     private String subtitle;
 
-    private ObservableList<Item> items = FXCollections.observableArrayList();
+    private ObservableList<T> items = FXCollections.observableArrayList();
 
     public ItemList(Image picture, String title, String subtitle) {
         this.picture = picture;
@@ -38,8 +38,12 @@ public class ItemList implements Item {
         return subtitle;
     }
 
-    public ObservableList<Item> getItems() {
+    public ObservableList<T> getItems() {
         return items;
+    }
+
+    public String toString() {
+        return items.toString();
     }
 
 }

@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.FlowPane?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1" type="javafx.scene.layout.FlowPane" xmlns="http://javafx.com/javafx/8.0.40"
-         fx:id="flowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="7.0"
+         alignment="TOP_CENTER" columnHalignment="CENTER" hgap="7.0"
          vgap="7.0">
     <children>
 

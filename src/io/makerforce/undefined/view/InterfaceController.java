@@ -1,6 +1,6 @@
 package io.makerforce.undefined.view;
 
-import io.makerforce.undefined.model.Util;
+import io.makerforce.undefined.util.Util;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;

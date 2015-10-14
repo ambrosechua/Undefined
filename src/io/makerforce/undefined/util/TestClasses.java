@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 public class TestClasses {
 
     public static void main(String[] args) throws MalformedURLException {
+
         Library l = new Library();
 
         Album a1 = new Album();
@@ -27,6 +28,9 @@ public class TestClasses {
         r2.getItems().addAll(a3, a4);
 
         l.getItems().addAll(r1, r2);
+
+        System.out.println(l.toString()); // Should print [[[null (null, null), null (null, null), null (null, null), null (null, null)], [null (null, null), null (null, null), null (null, null), null (null, null)]], [[], []]]
+
     }
 
 }
