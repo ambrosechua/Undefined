@@ -1,5 +1,6 @@
 package io.makerforce.undefined.view;
 
+import io.makerforce.undefined.Main;
 import io.makerforce.undefined.model.ItemList;
 import io.makerforce.undefined.model.Track;
 import javafx.beans.value.ObservableIntegerValue;
@@ -42,7 +43,7 @@ public class TrackListController extends VBox {
     private ItemList itemList;
 
     public TrackListController(Image image, String title, String subtitle) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tracklist.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tracklist.fxml"), Main.bundle);
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {

@@ -1,5 +1,6 @@
 package io.makerforce.undefined.view;
 
+import io.makerforce.undefined.Main;
 import io.makerforce.undefined.model.Item;
 import io.makerforce.undefined.model.ItemList;
 import io.makerforce.undefined.model.Track;
@@ -39,7 +40,6 @@ public class InterfaceController {
     private Label currentArtist;
     @FXML
     private ListView<String> showList;
-    private ObservableList<String> showListItems = FXCollections.observableArrayList("Artists", "Albums", "Songs");
     @FXML
     private ScrollPane scrollPane;
     //@FXML
@@ -112,7 +112,7 @@ public class InterfaceController {
 
         // Raw bindings
 
-        showList.setItems(showListItems);
+        showList.setItems(FXCollections.observableArrayList(Main.bundle.getString("artists"), Main.bundle.getString("albums"), Main.bundle.getString("tracks")));
         showList.selectionModelProperty().get().clearAndSelect(0);
         showList.selectionModelProperty().get().selectedIndexProperty().addListener(observable2 -> {
             int sel = showList.selectionModelProperty().get().getSelectedIndex();

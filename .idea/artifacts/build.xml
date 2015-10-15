@@ -3,10 +3,10 @@
     <output-path>$PROJECT_DIR$/out/artifacts/build</output-path>
     <root id="archive" name="build.jar">
       <element id="module-output" name="Undefined" />
-      <element id="library" level="project" name="org.json:json:20150729" />
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
+      <element id="library" level="project" name="org.json:json:20150729" />
     </root>
   </artifact>
 </component>

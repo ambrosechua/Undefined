@@ -5,6 +5,8 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0"
             minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null"
             fx:controller="io.makerforce.undefined.view.InterfaceController">
@@ -150,7 +152,15 @@
             <items>
                 <VBox fx:id="leftPane" maxWidth="240.0" minWidth="80.0" prefWidth="50.0">
                     <children>
-                        <ListView fx:id="showList" VBox.vgrow="ALWAYS"/>
+                        <ListView fx:id="showList" VBox.vgrow="ALWAYS"><!--
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="%artists" />
+                                    <String fx:value="%albums" />
+                                    <String fx:value="%tracks" />
+                                </FXCollections>
+                            </items>-->
+                        </ListView>
                         <VBox fx:id="currentDetails" alignment="BOTTOM_LEFT">
                             <children>
                                 <ImageView fx:id="currentImage" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true"

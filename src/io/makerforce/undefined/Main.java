@@ -13,11 +13,16 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.nio.file.Watchable;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Main extends Application {
 
     ChangeListener<LibraryManager.LibraryManagerState> ch = null; // Because it doesn't work in there
     private Stage mainStage;
+
+    public static ResourceBundle bundle = ResourceBundle.getBundle("bundles/bundle", Locale.getDefault());
 
     public static void main(String[] args) {
         launch(args);
@@ -26,7 +31,8 @@ public class Main extends Application {
     @Override
     public void start(Stage initStage) throws Exception {
 
-        Parent splashRoot = FXMLLoader.load(getClass().getResource("view/splash.fxml"));
+
+        Parent splashRoot = FXMLLoader.load(getClass().getResource("view/splash.fxml"), bundle);
         Scene splashScene = new Scene(splashRoot, 300, 200);
         initStage.initStyle(StageStyle.UNDECORATED);
         initStage.setScene(splashScene);
@@ -41,7 +47,7 @@ public class Main extends Application {
             Platform.runLater(() -> {
                 Parent root = null;
                 try {
-                    root = FXMLLoader.load(Main.this.getClass().getResource("view/interface.fxml"));
+                    root = FXMLLoader.load(Main.this.getClass().getResource("view/interface.fxml"), bundle);
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.exit(284);
