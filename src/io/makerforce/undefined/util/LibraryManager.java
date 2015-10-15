@@ -23,7 +23,7 @@ public class LibraryManager {
     public static final LibraryManagerState ERROR = new LibraryManagerState("error");
     public static final LibraryManagerState READY = new LibraryManagerState("ready");
 
-    public static final String DEFAULT_ENDPOINT = "http://ambrose.makerforce.io:8080";
+    public static final String DEFAULT_ENDPOINT = "http://undefined.ambrose.makerforce.io";
     private static ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1);
     private SimpleObjectProperty<LibraryManagerState> state = new SimpleObjectProperty<>();
     private URL endPoint;
