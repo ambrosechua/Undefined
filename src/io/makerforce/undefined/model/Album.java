@@ -1,7 +1,6 @@
 package io.makerforce.undefined.model;
 
 import io.makerforce.undefined.util.Util;
-import javafx.collections.ObservableList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,10 +23,6 @@ public class Album extends ItemList<Track> {
             Track a = new Track(o.getJSONArray("tracks").getJSONObject(i), albumName, artistName, endPoint); // Track a = new Track(o.getJSONArray("tracks").getJSONObject(i), endPoint);
             super.getItems().add(a);
         }
-    }
-
-    public ObservableList<Track> getTracks() {
-        return this.getItems();
     }
 
 }

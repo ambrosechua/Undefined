@@ -1,6 +1,7 @@
 package io.makerforce.undefined.util;
 
 import io.makerforce.undefined.model.Library;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import org.json.JSONObject;
 
@@ -11,6 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -21,16 +23,13 @@ public class LibraryManager {
     public static final LibraryManagerState ERROR = new LibraryManagerState("error");
     public static final LibraryManagerState READY = new LibraryManagerState("ready");
 
-    public static final String DEFAULT_ENDPOINT = "http://ambrose.makerforce.io:8080/";
-
+    public static final String DEFAULT_ENDPOINT = "http://ambrose.makerforce.io:8080";
+    private static ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1);
     private SimpleObjectProperty<LibraryManagerState> state = new SimpleObjectProperty<>();
-
     private URL endPoint;
-
     private Library l;
-
-    private ScheduledExecutorService scheduledExecutorService = null;
-    private boolean hasScheduled = false;
+    private ScheduledFuture<?> future;
+    //private static ArrayList<ScheduledFuture> futures = new ArrayList<>();
 
     public LibraryManager() {
         state.set(EMPTY);
@@ -53,6 +52,13 @@ public class LibraryManager {
         }
     }
 
+    public static void unScheduleAll() {
+        //futures.forEach((future) -> {
+        //    future.cancel(true);
+        //});
+        scheduledExecutorService.shutdownNow();
+    }
+
     public Library getLibrary() {
         return l;
     }
@@ -62,53 +68,67 @@ public class LibraryManager {
     }
 
     public void update() {
-        new Thread(() -> {
-            try {
-                state.set(UPDATING);
+        try {
+            state.set(UPDATING);
 
-                HttpURLConnection con = (HttpURLConnection) endPoint.openConnection();
-                con.setRequestMethod("GET");
-                con.setRequestProperty("User-Agent", "Mozilla/5.0");
-                con.setRequestProperty("X-Undefined-Client", "JavaFX/0.0.2");
+            HttpURLConnection con = (HttpURLConnection) endPoint.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            con.setRequestProperty("X-Undefined-Client", "JavaFX/0.0.2");
 
-                int responseCode = con.getResponseCode();
-                System.out.println("Response Code: " + responseCode);
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code: " + responseCode);
 
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuilder response = new StringBuilder();
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuilder response = new StringBuilder();
 
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-
-                JSONObject obj = new JSONObject(response.toString());
-                l = new Library(obj, endPoint);
-
-                state.set(READY);
-            } catch (IOException e) {
-                e.printStackTrace();
-                state.set(ERROR);
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
             }
-        }).run();
+            in.close();
+
+            JSONObject obj = new JSONObject(response.toString());
+            l = new Library(obj, endPoint);
+
+            state.set(READY);
+        } catch (IOException e) {
+            e.printStackTrace();
+            state.set(ERROR);
+        }
     }
 
     public void schedule() {
-        if (scheduledExecutorService == null) {
-            scheduledExecutorService = new ScheduledThreadPoolExecutor(1);
-            scheduledExecutorService.scheduleAtFixedRate(() -> {
-                this.update();
-            }, 0, 60, TimeUnit.SECONDS);
+        //this.update();
+        if (future == null) {
+            future = scheduledExecutorService.scheduleWithFixedDelay(() -> {
+                //this.update(); // DISABLED BECAUSE: Will stop playback if it's playing due to bad implementation. And anyway the server-side stuff won't change.
+                state.set(UPDATING);
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                state.set(READY);
+            }, 0, 60, TimeUnit.SECONDS); // Poke every minute (although nothing will change on the remote server)
+            //futures.add(future);
         } else {
             throw new Error("Updates are already scheduled");
         }
     }
 
+    public void scheduleRate() {
+        future.getDelay(TimeUnit.MILLISECONDS);
+    }
+
     public void unSchedule() {
-        scheduledExecutorService.shutdownNow();
-        scheduledExecutorService = null;
+        future.cancel(true);
+        //futures.remove(future);
+    }
+
+    public ObjectProperty<LibraryManagerState> stateProperty() {
+        return state;
     }
 
     public static final class LibraryManagerState {

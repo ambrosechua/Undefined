@@ -1,5 +1,8 @@
 package io.makerforce.undefined.util;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.Image;
 import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,11 +50,20 @@ public class Util {
 
     public static String getNotEmpty(String... strings) {
         for (String s : strings) {
-            if (!s.isEmpty()) {
+            if (s != null && !s.isEmpty()) {
                 return s;
             }
         }
         return "";
     }
 
+    public static ObjectProperty<Image> getImageFromURLProperty(ObjectProperty<URL> urlObjectProperty) {
+        ObjectProperty<Image> i = new SimpleObjectProperty<>();
+        urlObjectProperty.addListener(u -> {
+            if (u != null) {
+                i.set(new Image(urlObjectProperty.get().toString()));
+            }
+        });
+        return i;
+    }
 }

@@ -4,10 +4,12 @@ import io.makerforce.undefined.model.Track;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class PlayManager {
@@ -21,7 +23,7 @@ public class PlayManager {
 
     private ArrayList<Track> queue = new ArrayList<>();
 
-    private IntegerProperty currentTrack = new SimpleIntegerProperty(0);
+    private IntegerProperty currentTrack = new SimpleIntegerProperty(-1);
 
     private MediaPlayer player;
 
@@ -30,7 +32,12 @@ public class PlayManager {
     private DoubleProperty currentPercent = new SimpleDoubleProperty();
     private ObjectProperty<Duration> timeLeft = new SimpleObjectProperty<>();
     private ObjectProperty<Duration> currentTime = new SimpleObjectProperty<>();
-    private ObjectProperty<Duration> totalTime = new SimpleObjectProperty<>();
+    private ObjectProperty<Duration> totalTime = new SimpleObjectProperty<>(new Duration(0));
+
+    private ObjectProperty<URL> currentPicture = new SimpleObjectProperty<>();
+    private StringProperty currentTitle = new SimpleStringProperty();
+    private StringProperty currentArtist = new SimpleStringProperty();
+
     private ChangeListener<Duration> currentTimeChange = new ChangeListener<Duration>() {
         @Override
         public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration c) {
@@ -45,52 +52,115 @@ public class PlayManager {
     }
 
     private void load(Track track) {
-        player = new MediaPlayer(new Media(track.getFile().toString()));
+        player = new MediaPlayer(new Media(track.fileProperty().get().toString()));
+        // To player
         player.muteProperty().bind(muted);
         player.volumeProperty().bind(volume);
+        // From player
         player.currentTimeProperty().addListener(currentTimeChange);
-        totalTime.set(player.totalDurationProperty().get());
+        totalTime.bind(player.totalDurationProperty());
+        currentPicture.bind(track.pictureProperty());
+        currentTitle.bind(track.titleProperty());
+        currentArtist.bind(track.artistProperty());
     }
 
     public void play() {
-        if (state.equals(PAUSED) || state.equals(STOPPED)) {
-            player.play();
-            state.set(PLAYING);
-        } else if (state.equals(ENDED)) {
+        if (currentTrack.get() == -1) {
             next();
+        } else if (player == null) {
+
+        } else {
+            if (state.get() == PAUSED || state.get() == STOPPED) {
+                player.play();
+                state.set(PLAYING);
+                state.get();
+            } else if (state.get() == ENDED) {
+                next();
+            }
         }
     }
 
     public void pause() {
-        if (state.equals(PLAYING)) {
-            player.pause();
+        if (player == null) {
+
+        } else {
+            if (state.get() == PLAYING) {
+                player.pause();
+                state.set(PAUSED);
+            }
+        }
+    }
+
+    public void stop() {
+        if (player == null) {
+
+        } else {
+            player.stop();
             state.set(PAUSED);
         }
     }
 
     public void previous() {
-        if (currentTime.get().toSeconds() < 1) {
-            player.stop();
-            if (currentTrack.get() - 1 > 0) {
-                currentTrack.subtract(1);
-                load(queue.get(currentTrack.get()));
-            }
+        if (player == null) {
+
         } else {
-            player.seek(new Duration(0));
+            if (currentTime.get().toSeconds() < 2) {
+                stop();
+                if (currentTrack.get() - 1 > 0) {
+                    currentTrack.set(currentTrack.get() - 1);
+                    load(queue.get(currentTrack.get()));
+                    play();
+                }
+            } else {
+                player.seek(new Duration(0));
+            }
         }
     }
 
     public void next() {
-        player.stop();
-        if (currentTrack.get() + 1 < queue.size()) {
-            currentTrack.add(1);
-            load(queue.get(currentTrack.get()));
+        if (player != null) {
+            stop();
         }
+        if (currentTrack.get() + 1 < queue.size()) {
+            currentTrack.set(currentTrack.get() + 1);
+            load(queue.get(currentTrack.get()));
+            play();
+        }
+    }
+
+    public void seek(Duration t) {
+        player.seek(t);
+    }
+
+    public void setIndex(int selectedIndex) {
+        currentTrack.set(selectedIndex - 1);
+        next();
     }
 
     public void addToQueue(Track track) {
         queue.add(track);
     }
+
+    public void addAllToQueue(ObservableList<Track> tracks) {
+        queue.addAll(tracks);
+    }
+
+    public void clearQueue() {
+        if (player != null) {
+            stop();
+        }
+        queue.clear();
+        currentTrack.set(-1);
+    }
+
+    // Was for creating a new PlayManager, but decided to just reset the queue
+    /*
+    public void destroy() {
+        queue.clear();
+        player.stop();
+        player.dispose();
+    }
+    */
 
     public BooleanProperty muteProperty() {
         return muted;
@@ -118,6 +188,18 @@ public class PlayManager {
 
     public ObjectProperty<Duration> totalTimeProperty() {
         return totalTime;
+    }
+
+    public ObjectProperty<URL> currentPictureProperty() {
+        return currentPicture;
+    }
+
+    public StringProperty currentTitleProperty() {
+        return currentTitle;
+    }
+
+    public StringProperty currentArtistProperty() {
+        return currentArtist;
     }
 
     public static final class PlayManagerState {

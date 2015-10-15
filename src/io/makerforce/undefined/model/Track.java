@@ -1,6 +1,9 @@
 package io.makerforce.undefined.model;
 
 import io.makerforce.undefined.util.Util;
+import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -8,15 +11,15 @@ import java.net.URL;
 
 public class Track implements Item {
 
-    private URL file;
-    private URL picture;
-    private String title;
-    private String artist;
-    private String album;
-    private String year;
-    private int trackNumber; // track.no OR number
-    private int totalTracks;
-    private String[] genre;
+    private ObjectProperty<URL> file = new SimpleObjectProperty<>();
+    private ObjectProperty<URL> picture = new SimpleObjectProperty<>();
+    private StringProperty title = new SimpleStringProperty();
+    private StringProperty artist = new SimpleStringProperty();
+    private StringProperty album = new SimpleStringProperty();
+    private StringProperty year = new SimpleStringProperty();
+    private IntegerProperty trackNumber = new SimpleIntegerProperty(); // track.no OR number
+    private IntegerProperty totalTracks = new SimpleIntegerProperty();
+    private ObservableList<String> genre = FXCollections.observableArrayList();
 
     public Track() {
 
@@ -29,72 +32,71 @@ public class Track implements Item {
 
     public Track(JSONObject track, String albumName, String artistName, URL endPoint) {
         this();
-        title = Util.getNotEmpty(
+        title.set(Util.getNotEmpty(
                 track.getString("title"),
                 (track.has("filetitle") ? track.getString("filetitle") : "")
-        );
-        file = Util.toURLOrNull(endPoint + track.getString("file"));
-        picture = Util.toURLOrNull(endPoint + track.getString("picture"));
-        artist = Util.getNotEmpty(
+        ));
+        file.set(Util.toURLOrNull(endPoint + track.getString("file")));
+        picture.set(Util.toURLOrNull(endPoint + track.getString("picture")));
+        artist.set(Util.getNotEmpty(
                 (track.getJSONArray("artist").length() > 0 ? track.getJSONArray("artist").getString(0) : ""),
                 artistName
-        );
-        album = Util.getNotEmpty(
+        ));
+        album.set(Util.getNotEmpty(
                 track.getString("album"),
                 albumName
-        );
-        year = track.getString("year");
-        trackNumber = track.getInt("number"); // track.getJSONObject("track").getInt("no");
-        totalTracks = track.getJSONObject("track").getInt("of");
+        ));
+        year.set(track.getString("year"));
+        trackNumber.set(track.getInt("number")); // track.getJSONObject("track").getInt("no");
+        totalTracks.set(track.getJSONObject("track").getInt("of"));
         JSONArray genres = track.getJSONArray("genre");
-        genre = new String[genres.length()];
         for (int i = 0; i < genres.length(); i++) {
-            genre[i] = genres.getString(i);
+            genre.add(genres.getString(i));
         }
     }
 
-    public URL getPicture() {
+    public ObjectProperty<URL> pictureProperty() {
         return picture;
     }
 
-    public String getTitle() {
+    public StringProperty titleProperty() {
         return title;
     }
 
-    public String getSubtitle() {
+    public StringProperty subtitleProperty() {
         return artist;
     }
 
-    public URL getFile() {
+    public ObjectProperty<URL> fileProperty() {
         return file;
     }
 
-    public String getArtist() {
+    public StringProperty artistProperty() {
         return artist;
     }
 
-    public String getAlbum() {
+    public StringProperty albumProperty() {
         return album;
     }
 
-    public String getYear() {
+    public StringProperty yearProperty() {
         return year;
     }
 
-    public int getTrackNumber() {
+    public IntegerProperty trackNumberProperty() {
         return trackNumber;
     }
 
-    public int getTotalTracks() {
+    public IntegerProperty totalTracksProperty() {
         return totalTracks;
     }
 
-    public String[] getGenre() {
+    public ObservableList<String> getGenre() {
         return genre;
     }
 
     public String toString() {
-        return title + " (" + artist + ", " + album + ")";
+        return title.get() + " (" + artist.get() + ", " + album.get() + ")";
     }
 
 }

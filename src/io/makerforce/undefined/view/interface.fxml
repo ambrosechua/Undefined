@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0"
-            minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40"
+            minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null"
             fx:controller="io.makerforce.undefined.view.InterfaceController">
     <bottom>
         <HBox alignment="CENTER_LEFT" spacing="7.0" BorderPane.alignment="CENTER_LEFT">
@@ -66,17 +66,21 @@
                         </Button>
                     </children>
                     <HBox.margin>
-                        <Insets left="7.0" right="7.0"/>
+                        <Insets/>
                     </HBox.margin>
+                    <padding>
+                        <Insets left="7.0" right="7.0"/>
+                    </padding>
                 </HBox>
-                <Separator orientation="VERTICAL"/>
+                <Separator minWidth="-Infinity" orientation="VERTICAL" prefWidth="2.0"/>
                 <HBox alignment="CENTER" spacing="7.0" HBox.hgrow="ALWAYS">
                     <children>
                         <Label fx:id="playbackTimeLabel" minWidth="42.0" prefHeight="24.0" text="--:--"/>
                         <StackPane HBox.hgrow="ALWAYS">
                             <children>
                                 <ProgressBar fx:id="bufferProgress" minHeight="-Infinity" prefHeight="8.0"
-                                             prefWidth="1000.0" progress="0.0" StackPane.alignment="BOTTOM_CENTER">
+                                             prefWidth="1000.0" progress="0.0" visible="false"
+                                             StackPane.alignment="BOTTOM_CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="-5.0" left="4.0" right="6.0"/>
                                     </StackPane.margin>
@@ -91,8 +95,11 @@
                     <HBox.margin>
                         <Insets/>
                     </HBox.margin>
+                    <padding>
+                        <Insets left="7.0" right="7.0"/>
+                    </padding>
                 </HBox>
-                <Separator orientation="VERTICAL"/>
+                <Separator minWidth="-Infinity" orientation="VERTICAL" prefWidth="2.0"/>
                 <HBox alignment="CENTER" spacing="7.0">
                     <children>
                         <ToggleButton fx:id="muteToggle" mnemonicParsing="false">
@@ -111,16 +118,26 @@
                                 <Font size="1.0"/>
                             </font>
                         </ToggleButton>
-                        <Slider fx:id="volumeSlider" max="1.0" min="0.0" prefHeight="16.0" prefWidth="64.0"
+                        <Slider fx:id="volumeSlider" max="1.0" min="0.0" minWidth="-Infinity" prefWidth="64.0"
                                 value="1.0"/>
                     </children>
+                    <padding>
+                        <Insets left="7.0" right="7.0"/>
+                    </padding>
                 </HBox>
-                <Separator orientation="VERTICAL"/>
+                <Separator minWidth="-Infinity" orientation="VERTICAL" prefWidth="2.0"/>
                 <HBox alignment="CENTER" prefWidth="16.0">
                     <children>
-                        <ImageView fx:id="statusIcon" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true"
-                                   preserveRatio="true"/>
+                        <ImageView fx:id="statusIcon" fitHeight="16.0" fitWidth="16.0" opacity="0.75"
+                                   pickOnBounds="true" preserveRatio="true">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </ImageView>
                     </children>
+                    <padding>
+                        <Insets bottom="3.5" left="3.5" right="3.5" top="3.5"/>
+                    </padding>
                 </HBox>
             </children>
             <padding>

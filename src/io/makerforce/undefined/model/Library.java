@@ -1,11 +1,13 @@
 package io.makerforce.undefined.model;
 
-import javafx.collections.ObservableList;
 import org.json.JSONObject;
 
 import java.net.URL;
 
 public class Library extends ItemList<Artist> {
+
+    public ItemList<Album> albums = new ItemList<>();
+    public ItemList<Track> tracks = new ItemList<>();
 
     public Library() {
         super();
@@ -16,11 +18,17 @@ public class Library extends ItemList<Artist> {
         o.getJSONObject("artists").keySet().forEach((key) -> {
             Artist a = new Artist(o.getJSONObject("artists").getJSONObject(key), key, endPoint);
             super.getItems().add(a);
+            albums.getItems().addAll(a.getItems());
+            tracks.getItems().addAll(a.getTracks().getItems());
         });
     }
 
-    public ObservableList<Artist> getArtists() {
-        return this.getItems();
+    public ItemList<Album> getAlbums() {
+        return albums;
+    }
+
+    public ItemList<Track> getTracks() {
+        return tracks;
     }
 
 }

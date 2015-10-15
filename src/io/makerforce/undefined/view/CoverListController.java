@@ -1,5 +1,6 @@
 package io.makerforce.undefined.view;
 
+import io.makerforce.undefined.model.Item;
 import io.makerforce.undefined.model.ItemList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.FlowPane;
@@ -19,6 +20,18 @@ public class CoverListController extends FlowPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    }
+
+    public void setItemList(ItemList list) {
+        itemList = list;
+        list.getItems().forEach(i -> {
+            this.getChildren().add(new CoverItemController((Item) i));
+        });/*
+        this.getChildren().addAll(
+                (Collection<CoverItemController>)
+                        list.getItems().stream().map(i -> new CoverItemController((Item) i))
+                                .collect(Collectors.toList()));
+                                */
     }
 
 }

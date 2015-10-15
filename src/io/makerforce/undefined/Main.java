@@ -1,7 +1,10 @@
 package io.makerforce.undefined;
 
+import io.makerforce.undefined.util.LibraryManager;
+import io.makerforce.undefined.view.InterfaceController;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,12 +13,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class Main extends Application {
 
+    ChangeListener<LibraryManager.LibraryManagerState> ch = null; // Because it doesn't work in there
     private Stage mainStage;
 
     public static void main(String[] args) {
@@ -30,27 +31,60 @@ public class Main extends Application {
         initStage.initStyle(StageStyle.UNDECORATED);
         initStage.setScene(splashScene);
         initStage.toFront();
+        initStage.setAlwaysOnTop(true);
         initStage.show();
 
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.schedule(() -> Platform.runLater(() -> {
-            initStage.close();
+        ch = (state, oldValue, newValue) -> {
+            InterfaceController.getLibraryManager().stateProperty().removeListener(ch);
+            //ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+            //executor.schedule(() -> Platform.runLater(() -> {
+            Platform.runLater(() -> {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(Main.this.getClass().getResource("view/interface.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.exit(284);
+                }
+                mainStage = new Stage(StageStyle.DECORATED);
+                mainStage.setTitle("Undefined");
+                mainStage.setScene(new Scene(root, 640, 480));
+                mainStage.setMinHeight(((BorderPane) root).getMinHeight());
+                mainStage.setMinWidth(((BorderPane) root).getMinWidth());
+                mainStage.setOnCloseRequest((event) -> {
+                    LibraryManager.unScheduleAll();
+                });
+                mainStage.show();
+                //executor.shutdown();
+                InterfaceController.getLibraryManager().stateProperty().set(LibraryManager.UPDATING);
+                InterfaceController.getLibraryManager().stateProperty().set(LibraryManager.READY);
 
-            Parent root = null;
+                Thread initStageClose = new Thread(() -> {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(() -> {
+                        initStage.close();
+                    });
+                });
+                initStageClose.start();
+            });
+            //}), 1500, TimeUnit.MILLISECONDS);
+        };
+        InterfaceController.getLibraryManager().stateProperty().addListener(ch);
+
+        Thread init = new Thread(() -> {
             try {
-                root = FXMLLoader.load(getClass().getResource("view/interface.fxml"));
-            } catch (IOException e) {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
                 e.printStackTrace();
-                System.exit(284);
             }
-            mainStage = new Stage(StageStyle.DECORATED);
-            mainStage.setTitle("Undefined");
-            mainStage.setScene(new Scene(root, 640, 480));
-            mainStage.setMinHeight(((BorderPane) root).getMinHeight());
-            mainStage.setMinWidth(((BorderPane) root).getMinWidth());
-            mainStage.show();
-            executor.shutdown();
-        }), 1500, TimeUnit.MILLISECONDS);
+            InterfaceController.getLibraryManager().update(); // IT DOES REAL WORK MIND YOU. SO COOL. SADLY, SCHEDULING UPDATES DONT WORK YET
+        });
+        init.start();
+
     }
 
 }

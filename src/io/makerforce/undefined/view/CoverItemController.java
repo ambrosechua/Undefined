@@ -1,5 +1,6 @@
 package io.makerforce.undefined.view;
 
+import io.makerforce.undefined.model.Item;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -49,6 +50,10 @@ public class CoverItemController extends AnchorPane {
 
     public CoverItemController() {
         this(null, "", "", "");
+    }
+
+    public CoverItemController(Item i) {
+        this(new Image(String.valueOf(i.pictureProperty().get())), i.titleProperty().get(), i.subtitleProperty().get());
     }
 
 }

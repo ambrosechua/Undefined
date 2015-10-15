@@ -1,13 +1,16 @@
 package io.makerforce.undefined.model;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.StringProperty;
+
 import java.net.URL;
 
 public interface Item {
 
-    public URL getPicture();
+    ObjectProperty<URL> pictureProperty();
 
-    public String getTitle();
+    StringProperty titleProperty();
 
-    public String getSubtitle();
+    StringProperty subtitleProperty();
 
 }
