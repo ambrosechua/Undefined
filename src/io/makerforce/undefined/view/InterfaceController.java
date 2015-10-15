@@ -190,8 +190,8 @@ public class InterfaceController {
             if (c) {
                 playbackSlider.valueProperty().unbind();
             } else {
-                playbackSlider.valueProperty().bind(player.currentPercent());
                 player.seek(new Duration(playbackSlider.getValue() * player.totalTimeProperty().get().toMillis()));
+                playbackSlider.valueProperty().bind(player.currentPercent());
             }
         });
 
