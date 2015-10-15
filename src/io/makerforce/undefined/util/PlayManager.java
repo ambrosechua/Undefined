@@ -106,7 +106,7 @@ public class PlayManager {
         } else {
             if (currentTime.get().toSeconds() < 2) {
                 stop();
-                if (currentTrack.get() - 1 > 0) {
+                if (currentTrack.get() - 1 >= 0) {
                     currentTrack.set(currentTrack.get() - 1);
                     load(queue.get(currentTrack.get()));
                     play();

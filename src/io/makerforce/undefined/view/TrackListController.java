@@ -63,7 +63,6 @@ public class TrackListController extends VBox {
             InterfaceController.getPlayManager().addAllToQueue(itemList.getItems());
             InterfaceController.getPlayManager().setIndex(((ObservableIntegerValue) selectedIndex).get());
             //InterfaceController.getPlayManager().play();
-            System.out.println(((ObservableIntegerValue) selectedIndex).get());
         });
     }
 

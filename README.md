@@ -5,10 +5,10 @@ A self-hosted music streaming service, with a client written in JavaFX for a gra
 
 ## Features
 
-* Host your music on you own [server](https://github.com/ambrosechua/Undefined-server).
-* Stream via HTTP from anywhere around the world.
-* Albums, Artists, Songs.
-* Easy to use nw.js server interface.
+* Host your music on you own [server](https://github.com/ambrosechua/Undefined-server). (incomplete)
+* Stream via HTTP from anywhere around the world. (done)
+* Albums, Artists, Songs. (done)
+* Easy to use nw.js server interface. (incomplete)
 
 ## Future features
 

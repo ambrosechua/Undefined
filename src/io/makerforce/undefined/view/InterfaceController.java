@@ -1,5 +1,8 @@
 package io.makerforce.undefined.view;
 
+import io.makerforce.undefined.model.Item;
+import io.makerforce.undefined.model.ItemList;
+import io.makerforce.undefined.model.Track;
 import io.makerforce.undefined.util.LibraryManager;
 import io.makerforce.undefined.util.PlayManager;
 import io.makerforce.undefined.util.Util;
@@ -91,14 +94,11 @@ public class InterfaceController {
         albumList = new CoverListController();
         artistList = new CoverListController();
 
-        // Temporary stuff
-/*
-        try {
-            player.addToQueue(new Track(new JSONObject("{\"title\":\"Fade\",\"artist\":[\"Alan Walker\"],\"albumartist\":[\"Various Artists\"],\"album\":\"Fade\",\"year\":\"2014\",\"track\":{\"no\":7,\"of\":0},\"genre\":[\"Dance & House\"],\"disk\":{\"no\":1,\"of\":0},\"picture\":\"/art/Alan%20Walker/Fade/1\",\"duration\":0,\"number\":1,\"file\":\"/tracks/Alan%20Walker/Fade/Fade.mp3\"}"), "", "", new URL(LibraryManager.DEFAULT_ENDPOINT)));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-*/
+        albumList.setController(this);
+        artistList.setController(this);
+
+        scrollPane.setContent(artistList);
+
         // UI Bindings
 
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
@@ -153,7 +153,7 @@ public class InterfaceController {
                 }, 1000); // Quick hack to trigger more frequent updates.
             }
         });
-        //libraryManager.schedule();
+        libraryManager.schedule();
 
         // Player bindings
 
@@ -220,6 +220,19 @@ public class InterfaceController {
 
         player.previous();
 
+    }
+
+    public void showCoverList(ItemList<Item> i) {
+        CoverListController c = new CoverListController();
+        c.setController(this);
+        c.setItemList(i);
+        scrollPane.setContent(c);
+    }
+
+    public void showTrackList(ItemList<Track> i) {
+        TrackListController t = new TrackListController(new Image(String.valueOf(i.pictureProperty().get())), i.titleProperty().get(), i.subtitleProperty().get());
+        t.setItemList(i);
+        scrollPane.setContent(t);
     }
 
     private void clearStatusIcon(int milliseconds) {
