@@ -7,79 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="IT WORRRKSSSSS.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/model/Album.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/model/Artist.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/CoverItemController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/CoverListController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/InterfaceController$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/InterfaceController$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/io/makerforce/undefined/view/InterfaceController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/InterfaceController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/model/Item.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/model/ItemList.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/model/JSONLibrary.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/model/Library.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/util/LibraryManager$LibraryManagerState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/util/LibraryManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/io/makerforce/undefined/Main.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/Main.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/util/PlayManager$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/util/PlayManager$PlayManagerState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/util/PlayManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/io/makerforce/undefined/model/Playlist.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/util/TestClasses.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/io/makerforce/undefined/model/Track.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/model/Track.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/TrackListController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/io/makerforce/undefined/model/Util.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/util/Util.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/build.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/cloud-check.32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/cloud-download.32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/json-20150729.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/icons/next2.32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/next2.32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/icons/pause2.48.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/pause2.48.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/icons/play3.48.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/play3.48.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/icons/previous2.32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/previous2.32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/images/srw.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/icons/volume-medium.24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/volume-medium.24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/icons/volume-mute2.24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/volume-mute2.24.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/icons/warning.32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/bundles/bundle.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bundles/bundle.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/bundles/bundle_ja.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bundles/bundle_ja.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/bundles/bundle_ja_utf8.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bundles/bundle_ja_utf8.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/bundles/bundle_zh.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bundles/bundle_zh.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/bundles/bundle_zh_utf8.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bundles/bundle_zh_utf8.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/coveritem.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/coverlist.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/io/makerforce/undefined/view/interface.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/interface.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/makebundles.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/build/b/io/makerforce/undefined/view/splash.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/splash.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Undefined/io/makerforce/undefined/view/tracklist.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/makerforce/undefined/view/InterfaceController.java" afterPath="$PROJECT_DIR$/src/io/makerforce/undefined/view/InterfaceController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/makerforce/undefined/Main.java" afterPath="$PROJECT_DIR$/src/io/makerforce/undefined/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/makerforce/undefined/view/TrackListController.java" afterPath="$PROJECT_DIR$/src/io/makerforce/undefined/view/TrackListController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/build.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/makerforce/undefined/view/interface.fxml" afterPath="$PROJECT_DIR$/src/io/makerforce/undefined/view/interface.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/makerforce/undefined/view/splash.fxml" afterPath="$PROJECT_DIR$/src/io/makerforce/undefined/view/splash.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/makerforce/undefined/view/tracklist.fxml" afterPath="$PROJECT_DIR$/src/io/makerforce/undefined/view/tracklist.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Undefined_jar.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/build.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -139,18 +69,7 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="InterfaceController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/io/makerforce/undefined/view/InterfaceController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42424244">
-              <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -343,72 +262,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Undefined" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="icons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -425,6 +278,14 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bundles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resource Bundle 'bundle'" />
+              <option name="myItemType" value="com.intellij.lang.properties.projectView.ResourceBundleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -445,7 +306,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="FullScreen" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/BasicPlayer3.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -801,7 +662,7 @@
       <workItem from="1444700132845" duration="8032000" />
       <workItem from="1444804563726" duration="30382000" />
       <workItem from="1444905270596" duration="14563000" />
-      <workItem from="1444930733329" duration="207000" />
+      <workItem from="1444930733329" duration="584000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1444218455154</created>
@@ -909,7 +770,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105752000" />
+    <option name="totallyTimeSpent" value="106129000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -926,14 +787,15 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23104957" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32931423" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25285715" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25285715" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15407854" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15407854" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -946,7 +808,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39868805" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23104957" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2976639" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26530612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1418,8 +1279,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/makerforce/undefined/view/InterfaceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42424244">
-          <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.08928572">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1430,7 +1291,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>build</last-edited>
+          <last-edited>Undefined:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
