@@ -41,13 +41,21 @@ public class PlayManager {
     private ChangeListener<Duration> currentTimeChange = new ChangeListener<Duration>() {
         @Override
         public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration c) {
-            currentPercent.set(c.toMillis() / player.getTotalDuration().toMillis());
+            currentPercent.set(c.toMillis() / totalTime.get().toMillis());
             currentTime.set(c);
             timeLeft.set(c.subtract(currentTime.get()));
         }
     };
 
     public PlayManager() {
+
+        /*
+        currentPercent.addListener((n) -> {
+            if (currentPercent.getValue() == 1) {
+                next();
+            }
+        });
+        */
 
     }
 
@@ -62,6 +70,10 @@ public class PlayManager {
         currentPicture.bind(track.pictureProperty());
         currentTitle.bind(track.titleProperty());
         currentArtist.bind(track.artistProperty());
+        player.onEndOfMediaProperty().addListener((s) -> {
+            next(); // NOT WORKING
+        });
+
     }
 
     public void play() {
